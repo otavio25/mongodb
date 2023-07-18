@@ -3,7 +3,14 @@ const model = require('../model/Texto')
 module.exports = {
     get : async(req, res) => {
         try {
-            return res.status(200).json({message: 'Busca realizada com sucesso'})
+            const {titulo} = req.query
+            const resultado = await model.find({titulo: titulo})
+            if(resultado.length === 0 || !resultado){
+                res.status(404).json({message: 'recurso não encontrado'})
+            }
+            else{
+                return res.status(200).json({resultado})
+            }
         } catch (error) {
             console.log(error.message)
             return res.status(500).json({error: 'Erro no servidor!'})
