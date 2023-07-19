@@ -9,5 +9,6 @@ router.get("/texto", controller_listagem.get)
 router.post("/cadastro/texto", controller_cadastro.post)
 router.put("/altera/texto", controller_alterar.put)
 router.delete("/deleta/texto", controller_deletar.delete)
+router.get("/textos", controller_listagem.get_listagem_completa)
 
 module.exports = router

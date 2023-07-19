@@ -6,7 +6,7 @@ module.exports = {
             const {titulo} = req.query
             const resultado = await model.findOneAndDelete({titulo: titulo})
             console.log(resultado)
-            return res.status(200).json({message: 'recurso deletado com sucesso'})
+            return res.status(200).json({message: 'recurso deletado com sucesso', resultado})
         }catch(error){
             console.log(error.message)
             return res.status(500).json({error: 'Erro no servidor!'})
